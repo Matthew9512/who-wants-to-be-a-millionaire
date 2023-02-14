@@ -53,7 +53,29 @@
 
 .correct {
   background-color: green;
+  animation: pulse 2s forwards;
 }
 .incorrect {
   background-color: red;
+}
+.half {
+  opacity: 0.3;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 0.5;
+  }
+  40% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }

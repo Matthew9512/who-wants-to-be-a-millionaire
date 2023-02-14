@@ -10,9 +10,14 @@
   </head>
   <body>
     <main class="container">
+      <audio src="./sound/main theme.mp3" loop id="intro-music"></audio>
+      <audio src="./sound/next-question.mp3" id="next-question"></audio>
+      <audio src="./sound/wrong answer.mp3" id="wrong-answer"></audio>
+      <audio src="./sound/correct answer.mp3" id="correct-answer"></audio>
+      <audio src="./sound/background music.mp3" loop id="background-music"></audio>
       <section class="welcome">
         <div class="welcome__logo">
-          <img src="./public/img/logo.png" alt="" />
+          <img src="./img/logo.png" alt="" />
         </div>
         <div class="welcome__btns">
           <button class="btn btn-start">Start game</button>
@@ -26,13 +31,32 @@
       </section>
       <!-- game -->
       <section class="game hidden">
-        <!-- <div class="game__pulpit">
-          <p class="game__pulpit-question">Q Lorem ipsum dolor sit amet.</p>
-          <p class="game__pulpit-answer right">A Lorem ipsum dolor sit amet.</p>
-          <p class="game__pulpit-answer left">B Lorem ipsum dolor sit amet.</p>
-          <p class="game__pulpit-answer right">C Lorem ipsum dolor sit amet.</p>
-          <p class="game__pulpit-answer left">D Lorem ipsum dolor sit amet.</p>
-        </div> -->
+        <div class="game__pulpit"></div>
+      </section>
+      <section class="tabel hidden">
+        <div class="tabel__helpers">
+          <button class="btn btn-new-question">New</button>
+          <!-- <i class="fa-solid fa-arrows-rotate btn-new-question"></i> -->
+          <button class="btn btn-half-answers">50/50</button>
+          <button class="btn btn-widthraw">Give up</button>
+        </div>
+        <ol class="tabel__score">
+          <li class="tabel__score-item" data-question="1">100</li>
+          <li class="tabel__score-item" data-question="2">200</li>
+          <li class="tabel__score-item" data-question="3">300</li>
+          <li class="tabel__score-item" data-question="4">500</li>
+          <li class="tabel__score-item save" data-question="5">1,000</li>
+          <li class="tabel__score-item" data-question="6">2,000</li>
+          <li class="tabel__score-item" data-question="7">4,000</li>
+          <li class="tabel__score-item" data-question="8">8,000</li>
+          <li class="tabel__score-item save" data-question="9">16,000</li>
+          <li class="tabel__score-item" data-question="10">32,000</li>
+          <li class="tabel__score-item" data-question="11">64,000</li>
+          <li class="tabel__score-item" data-question="12">125,000</li>
+          <li class="tabel__score-item" data-question="13">250,000</li>
+          <li class="tabel__score-item" data-question="14">500,000</li>
+          <li class="tabel__score-item save" data-question="15">1,000,000</li>
+        </ol>
       </section>
     </main>
   </body>

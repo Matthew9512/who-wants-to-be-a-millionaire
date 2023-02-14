@@ -1,4 +1,5 @@
 import { API_LINK } from './config';
+import { endGameView } from './views/endView';
 import { gameInterface } from './views/gameView';
 
 export const state = {
@@ -16,8 +17,8 @@ const addDifficulty = function (values, level) {
   });
 };
 addDifficulty([1, 2, 3, 4, 5], 'easy');
-addDifficulty([6, 7, 8, 9], 'medium');
-addDifficulty([10, 11, 12], 'hard');
+addDifficulty([6, 7, 8, 9, 10], 'medium');
+addDifficulty([11, 12, 13, 14, 15], 'hard');
 
 //
 const setDifficulty = function (questionNumber) {
@@ -47,7 +48,6 @@ export const startGame = async function () {
     game.classList.remove('hidden');
 
     sortAnswers();
-    // gameInterface();
   } catch (error) {
     // console.log(error.message);
   }
@@ -56,37 +56,51 @@ export const startGame = async function () {
 //
 export const checkAnswer = function (click) {
   const gamePulpitAnswer = document.querySelectorAll('.game__pulpit-answer');
+  const correctAnswer = document.querySelector('#correct-answer');
+  const wrongAnswer = document.querySelector('#wrong-answer');
+  const backgroundMusic = document.querySelector('#background-music');
+  const nextQuestion = document.querySelector('#next-question');
 
   if (click.dataset.answer === state.question.at(0).correct) {
+    // play song for corret answer
+    backgroundMusic.pause();
+    correctAnswer.currentTime = 0;
+    nextQuestion.currentTime = 0;
+    correctAnswer.play();
+
+    currentScore();
+
     click.classList.add('correct');
     state.questionNumber = state.questionNumber + 1;
-    startGame();
+    setTimeout(() => {
+      startGame();
+      correctAnswer.pause();
+      nextQuestion.play();
+      setTimeout(() => {
+        nextQuestion.pause();
+        backgroundMusic.play();
+      }, 4400);
+    }, 3800);
   }
   //
-  else {
+  if (state.questionNumber === 16) {
+    const gameState = 'win';
+    endGameView(gameState);
+  }
+  //
+  if (click.dataset.answer !== state.question.at(0).correct) {
     gamePulpitAnswer.forEach((value) => {
       if (value.dataset.answer === state.question.at(0).correct) {
+        // play song for wrong answer
+        backgroundMusic.pause();
+        wrongAnswer.play();
         value.classList.add('correct');
         click.classList.add('incorrect');
-        // display modal?
+        const gameState = 'lost';
+        endGameView(gameState);
       }
     });
   }
-  // if (click.dataset.answer === 'correct') {
-  //   click.classList.add('correct');
-  //   state.questionNumber = state.questionNumber + 1;
-  //   startGame();
-  //   // load next question and update question number
-  // }
-  // //
-  // if (click.dataset.answer === 'incorrect') {
-  //   gamePulpitAnswer.forEach((value) => {
-  //     if (value.dataset.answer === 'correct') {
-  //       value.classList.add('correct');
-  //       click.classList.add('incorrect');
-  //     }
-  //   });
-  // }
 };
 
 //
@@ -105,6 +119,32 @@ export const sortAnswers = function () {
     state.sortedQuestions = answersArray;
   }
   gameInterface();
+};
+
+//
+const currentScore = function () {
+  const tabelScoreItem = document.querySelectorAll('.tabel__score-item');
+  tabelScoreItem.forEach((value) => {
+    if (value.dataset.question == state.questionNumber) {
+      value.classList.add('current-score');
+      value.setAttribute('data-score', ' • ');
+    } else {
+      value.classList.remove('current-score');
+    }
+  });
+};
+
+//
+export const helperHalf = function () {
+  const tabelScoreItem = [...document.querySelectorAll('.game__pulpit-answer')];
+  // const btnHalfAnswers = document.querySelector('.btn-half-answers');
+  const random = Math.floor(Math.random() * 2);
+
+  //
+  const inncorectAnswers = tabelScoreItem.filter((value) => value.dataset.answer !== state.question.at(0).correct);
+
+  inncorectAnswers.at(random).classList.add('half');
+  inncorectAnswers.at(random + 1).classList.add('half');
 };
 
 //

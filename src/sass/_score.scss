@@ -1,0 +1,35 @@
+@use 'main';
+
+.tabel {
+  position: absolute;
+  top: 5%;
+  right: 2%;
+  width: 10em;
+  padding: 1em;
+  background-color: darkblue;
+
+  &__helpers {
+  }
+  &__score {
+    display: flex;
+    flex-direction: column-reverse;
+    padding-inline: 1em;
+    &-item {
+      color: orange;
+    }
+    &-item:before {
+      content: attr(data-score);
+    }
+    &-item:after {
+      content: ' $';
+    }
+  }
+}
+
+.save {
+  color: main.$white;
+}
+.current-score {
+  // font-size: 1.2rem;
+  color: main.$green;
+}
