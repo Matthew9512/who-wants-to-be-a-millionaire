@@ -6,16 +6,16 @@
   right: 2%;
   width: 10em;
   padding: 1em;
-  background-color: darkblue;
+  background-color: main.$blue;
+  border-radius: 0.5em;
 
-  &__helpers {
-  }
   &__score {
     display: flex;
     flex-direction: column-reverse;
     padding-inline: 1em;
     &-item {
       color: orange;
+      text-align: right;
     }
     &-item:before {
       content: attr(data-score);
@@ -30,6 +30,32 @@
   color: main.$white;
 }
 .current-score {
-  // font-size: 1.2rem;
   color: main.$green;
+  animation: pulse 2s forwards;
+}
+
+.btn-widthraw {
+  margin-top: 1em;
+}
+.btn-close-table {
+  position: absolute;
+  top: 6%;
+  left: 10%;
+
+  visibility: hidden;
+
+  @media screen and (max-width: 850px) {
+    visibility: visible;
+  }
+}
+.btn-mute {
+  position: absolute;
+  top: 6%;
+  left: 4%;
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

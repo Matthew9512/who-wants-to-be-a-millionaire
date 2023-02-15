@@ -1,7 +1,7 @@
 @use 'main';
 
 .btn {
-  padding: 0.4em 0.6em;
+  padding: 0.2em 0.3em;
   background-color: transparent;
   border-radius: 0.6em;
   position: relative;
@@ -56,4 +56,66 @@
 
 .hidden {
   display: none;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 0.5;
+  }
+  40% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-120px);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(-60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(120px);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateX(60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-120px);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateX(-60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
