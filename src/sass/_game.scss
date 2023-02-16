@@ -33,7 +33,6 @@
       align-items: center;
 
       clip-path: polygon(main.$answer-shape);
-      // width: 28em;
       height: 4em;
       border-radius: 1em 0 0 1em;
       padding-left: 4.5em;
@@ -53,16 +52,16 @@
 .left {
   animation: fadeInLeft 2s linear forwards;
 }
-
+.half {
+  opacity: 0.3;
+  color: #ffffff24;
+}
 .correct {
   background-color: main.$correct;
   animation: pulse 2s forwards;
 }
 .incorrect {
   background-color: main.$incorrect;
-}
-.half {
-  opacity: 0.3;
 }
 .btn-new-game {
   width: 8em;

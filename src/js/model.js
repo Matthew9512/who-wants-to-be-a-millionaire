@@ -32,13 +32,14 @@ export const startGame = async function () {
   const welcome = document.querySelector('.welcome');
   const game = document.querySelector('.game');
   const tabel = document.querySelector('.tabel');
+  const toggleTable = document.querySelector('.btn-close-table');
 
   const type = setDifficulty(state.questionNumber);
 
   try {
     const respond = await fetch(`${API_LINK}?amount=1&difficulty=${type}&type=multiple`);
     const data = await respond.json();
-    // console.log(data);
+
     state.question = data.results.map((value) => {
       return {
         correct: value.correct_answer,
@@ -50,10 +51,11 @@ export const startGame = async function () {
     welcome.classList.add('hidden');
     tabel.classList.remove('hidden');
     game.classList.remove('hidden');
+    toggleTable.classList.remove('hide');
 
     sortAnswers();
   } catch (error) {
-    // console.log(error.message);
+    console.log(error.message);
   }
 };
 

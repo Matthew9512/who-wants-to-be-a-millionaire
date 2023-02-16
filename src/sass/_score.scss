@@ -39,23 +39,20 @@
 }
 .btn-close-table {
   position: absolute;
-  top: 6%;
-  left: 10%;
-
-  visibility: hidden;
-
-  @media screen and (max-width: 850px) {
-    visibility: visible;
-  }
+  top: 2em;
+  left: 7em;
 }
 .btn-mute {
   position: absolute;
-  top: 6%;
-  left: 4%;
+  top: 2em;
+  left: 4em;
   width: 2em;
   height: 2em;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.hide {
+  visibility: hidden;
 }

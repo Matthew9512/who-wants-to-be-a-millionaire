@@ -75,6 +75,7 @@ game.addEventListener('click', (e) => {
 tabel.addEventListener('click', (e) => {
   const click = e.target;
   const gameState = 'withdraw';
+  if (!click.classList.contains('btn')) return;
   if (click.classList.contains('btn-new-question')) startGame();
   if (click.classList.contains('btn-half-answers')) helperHalf();
   if (click.classList.contains('btn-widthraw')) endGameView(gameState);
